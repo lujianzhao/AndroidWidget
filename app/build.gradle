@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "com.liangzhicn.androidbasedemo"
+        minSdkVersion 16
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+    //配置keystore签名
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+//            signingConfig signingConfigs.release
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled true
+            //zip优化
+            zipAlignEnabled true
+           //移除无用的resource文件
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':androidwidget')
+    compile 'com.lzy.widget:imagepicker:0.2.1'
+    compile 'com.lzy.widget:view-core:0.2.1'
+
+    // 桌面图标显示消息数量,目前版本1.1.8.https://github.com/MacNovice/ShortcutBadger
+    //ShortcutBadger.applyCount(context, 33); //添加
+    //ShortcutBadger.removeCount(context); //删除
+    compile project(':ShortcutBadger')
+}
