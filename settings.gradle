@@ -1,1 +1,1 @@
-include ':app', ':androidwidget', ':ShortcutBadger'
+include ':app', ':androidwidget'
