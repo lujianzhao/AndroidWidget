@@ -1,15 +1,15 @@
 apply plugin: 'com.android.library'
 
-version = "1.0.4"
+version = "1.0.5"
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 20
-        versionCode 3
+        versionCode 5
         versionName version
     }
     buildTypes {
@@ -34,7 +34,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.ljz.base:androidbase:1.0.4'
+    compile 'com.ljz.base:androidbase:1.0.5'
 }
 
 //编译命令：gradle clean build bintrayupload
